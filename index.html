@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Writing Effective JavaScript Code</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -61,7 +61,7 @@
 				</section>
 
 				<!-- Example of nested vertical slides -->
-				<section>
+				<!--<section>
 					<section>
 						<h2>Vertical Slides</h2>
 						<p>
@@ -90,15 +90,118 @@
 							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
 						</a>
 					</section>
-				</section>
+				</section>-->
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
+					<section>
+						<h2>Date Types</h2>
+						<p>
+							There're six date types defined in ECMAScript standard:
+						</p>
+						<ul>
+							<li>Number</li>
+							<li>String</li>
+							<li>Boolean</li>
+							<li>Null</li>
+							<li>Undefined</li>
+							<li>Object</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Primitive values</h2>
+						<p>Except Object, all other five types are primitive type.</p>
+						<blockquote>
+						<small>
+						Boolean, Null, Undefined can have only four constant values.
+						</small>
+						</blockquote>
+						<pre><code data-trim class="javascript">
+true, false	// Boolean
+null				// Null
+undefined	// Undefined
+							</code></pre>
+						<blockquote>
+						<small>
+						Number - JavaScript has a single number type. There's no interger, nor float or other specific type.
+						</small>
+						</blockquote>
+						<pre><code data-trim class="javascript">
+								100, 1e2, NaN,  -100		//Number
+							</code></pre>
+						<blockquote>
+						<small>
+						String - Unlike in languages like C, JavaScript strings are immutable. You can't change the original value, but create new string with operators.
+						</small>
+						</blockquote>
+						<pre><code data-trim class="javascript">
+								"hello", 'world'		// String
+"hello \"world\"		// String
+'Hello "world"'			// String
+'Hello	world'			// String
+							</code></pre>
+					</section>
+					<section>
+						<h2>There're six falsy values</h2>
+						<p>that means if you put them in a logical execution, they all return false</p>
+						<pre><code data-trim class="javascript">
+							false
+null
+undefined
+The empty string ''
+The number 0
+The number NaN
+						</code></pre>
+						<p>All other values are truthy, including true, the string 'false', and all objects.</p>
+					</section>
+					<section>
+						<p>Code Snippet</p>
+						<pre><code data-trim class="javascript">
+							var label = jQuery(this),
+f = label.attr('for'),
+				
+if (f) {
+...
+	
+if (input.val() != '') {
+		this.hide(); 
+}
 
+var defaults = {
+		country: 'US',
+};
+
+if(!opts.country) {
+		return this;
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Predefined Objects</h2>
+						<p>Array, Boolean, Date, Function, Math, Number, RegExp, and String.</p>
+						
+						<pre><code class="javascript">
+var arr = new Array(element0, element1, ..., elementN);
+var arr = Array(element0, element1, ..., elementN);
+var arr = [element0, element1, ..., elementN];
+						</code></pre>
+						
+						<pre><code class="javascript">
+var bool = new Boolean(true);
+						</code></pre>
+						
+						<pre><code class="javascript">
+var Xmas95 = new Date("December 25, 1995");
+						</code></pre>
+						
+						<pre><code class="javascript">
+var setBGColor = new Function("document.bgColor = 'antiquewhite'");
+						</code></pre>
+						
+						<pre><code class="javascript">
+var s2 = new String("foo"); //creates a String object
+						</code></pre>
+					</section>
+				</section>
 				<section>
 					<h2>Point of View</h2>
 					<p>
