@@ -108,39 +108,6 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Primitive values</h2>
-						<p>Except Object, all other five types are primitive type.</p>
-						<blockquote>
-						<small>
-						Boolean, Null, Undefined can have only four constant values.
-						</small>
-						</blockquote>
-						<pre><code data-trim class="javascript">
-true, false	// Boolean
-null				// Null
-undefined	// Undefined
-							</code></pre>
-						<blockquote>
-						<small>
-						Number - JavaScript has a single number type. There's no interger, nor float or other specific type.
-						</small>
-						</blockquote>
-						<pre><code data-trim class="javascript">
-								100, 1e2, NaN,  -100		//Number
-							</code></pre>
-						<blockquote>
-						<small>
-						String - Unlike in languages like C, JavaScript strings are immutable. You can't change the original value, but create new string with operators.
-						</small>
-						</blockquote>
-						<pre><code data-trim class="javascript">
-								"hello", 'world'		// String
-"hello \"world\"		// String
-'Hello "world"'			// String
-'Hello	world'			// String
-							</code></pre>
-					</section>
-					<section>
 						<h2>There're six falsy values</h2>
 						<p>that means if you put them in a logical execution, they all return false</p>
 						<pre><code data-trim class="javascript">
@@ -163,43 +130,38 @@ if (f) {
 ...
 	
 if (input.val() != '') {
-		this.hide(); 
+	this.hide(); 
 }
 
 var defaults = {
-		country: 'US',
+	country: 'US',
 };
 
 if(!opts.country) {
-		return this;
+	return this;
 }
 						</code></pre>
 					</section>
 					<section>
-						<h2>Predefined Objects</h2>
-						<p>Array, Boolean, Date, Function, Math, Number, RegExp, and String.</p>
-						
+						<h2>More effective logic operator &amp;&amp; and ||</h2>
+						<p>Besides, && and || can be used as logic, such as</p>
 						<pre><code class="javascript">
-var arr = new Array(element0, element1, ..., elementN);
-var arr = Array(element0, element1, ..., elementN);
-var arr = [element0, element1, ..., elementN];
+if(!input.attr('type') || $.inArray(input.attr('type'), validFields) != -1){
+	
+if(args.length > 1 && args[0] === "novalidate"){
+	return this;
+}    
+						</code></pre>
+						Or, you can use the other way:
+						<pre><code class="javascript">
+$.orderpath = $.orderpath || {};
+						
+(base.opts.selected || base.opts.year) === val
+						
+ltie8 = msie && parsetInt($.browser.version, 10) < 8
+
 						</code></pre>
 						
-						<pre><code class="javascript">
-var bool = new Boolean(true);
-						</code></pre>
-						
-						<pre><code class="javascript">
-var Xmas95 = new Date("December 25, 1995");
-						</code></pre>
-						
-						<pre><code class="javascript">
-var setBGColor = new Function("document.bgColor = 'antiquewhite'");
-						</code></pre>
-						
-						<pre><code class="javascript">
-var s2 = new String("foo"); //creates a String object
-						</code></pre>
 					</section>
 				</section>
 				<section>
