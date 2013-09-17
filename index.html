@@ -49,9 +49,9 @@
 					<h2>Heads Up</h2>
 					<ul>
 						<li>More Effective Operators</li>
-						<li>Shortcut Notations</li>
-						<li>Array Methods</li>
-						<li>Using jQuery</lib>
+						<li>Object, Array Shortcut Notations</li>
+						<li>Chainable Methods and Self-invoking Functions</li>
+						<li>Pitfall To Care</lib>
 						<li>jQuery Plugins Boilerplates</li>
 						<li>Coding with Module Pattern</li>
 					</ul>
@@ -214,6 +214,14 @@ var validFields = new Array('text', 'password', 'email', 'color','date');
 				<pre><code class="javascript">
 var validFields = ['text', 'password', 'email', 'color','date'];	
 				</code></pre>
+				<p>Mixture type of values</p>
+<pre><code class="javascript">				
+var misc = [
+    'string', 98.6, true, false, null, undefined,
+    ['nested', 'array'], {object: true}, NaN,
+    Infinity
+];
+</code></pre>
 				</section>
 				<section>
 					<h2>Prototype Inheritance</h2>
@@ -254,16 +262,166 @@ Slot.prototype.hideTooltip = function(tooltip) {
 } 						
 				</code></pre>		
 				</section>
-
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+					<h2>Make Object Chainable</h2>
+					<p>Instead of writing</p>
+					<pre><code class="javascript">
+var Profile = function() {
+	this.skills = [];
+	this.id;
+};
 
+Profile.prototype = {
+init: function() {
+	this.removeProfile();
+	this.deleteSkill();
+	this.addSkills();
+	this.closeModel();
+},
+removeProfile: function() {
+	for(var i = 0, len = buttons.length; i < len; i++) {
+	...
+
+},
+addSkills: function() {
+	var profileId;
+
+	for(var i = 0, len = buttons.length; i < len; i++) {
+
+		(function(addButton){
+
+		addButton.onclick = function() {
+		//..
+	}
+	
+},
+
+deleteSkill: function() {
+	for(var i = 0, len = anchors.length; i < len; i++) {
+		(function(anchor){
+
+			anchor.onclick = function() {
+			//...
+	}
+}
+}	
+</code></pre>				
+				</section>
+				<section>
+					<h2>Make Object Chainable</h2>
+					<p>Make methods of the object chainable</p>
+					<pre><code class="javascript">
+var Profile = function() {
+	this.skills = [];
+	this.id;
+};
+
+Profile.prototype = {
+init: function() {
+	this.removeProfile()
+		.deleteSkill()
+		.addSkills()
+		.closeModel();
+},
+removeProfile: function() {
+	for(var i = 0, len = buttons.length; i < len; i++) {
+	...
+
+	return this;
+},
+addSkills: function() {
+	var profileId;
+
+	for(var i = 0, len = buttons.length; i < len; i++) {
+
+		(function(addButton){
+
+		addButton.onclick = function() {
+		//..
+	}
+	
+	return this;
+	
+},
+
+deleteSkill: function() {
+	for(var i = 0, len = anchors.length; i < len; i++) {
+		(function(anchor){
+
+			anchor.onclick = function() {
+			//...
+		}
+		return this;
+	}
+}	
+</code></pre>				
+				</section>
+			<section>
+					<h2>Self-invoking function</h2>
+					<p>Instead of writing</p>
+					<pre><code class="javascript">
+ var domRoot = document.getElementById('pwkmWedTicker'),
+        s, domDays, domHours, domMinutes, timer = false,
+        DAYUNIT = 1000 * 60 * 60 * 24;
+</code></pre>
+				<p>
+						Make a close context and do not litter global environment
+					</p>
+<pre><code class="javascript">				
+(function() {
+
+    var domRoot = document.getElementById('pwkmWedTicker'),
+	s, domDays, domHours, domMinutes, timer = false,
+	DAYUNIT = 1000 * 60 * 60 * 24,
+	//...
+    domRoot = null;
+
+}());		
+</code></pre>
+<p>Use widely in most jQuery-like code</p>
+<pre><code class="javascript">
+(function($, window, document, undefined){
+
+	// your stuff, use $ sign boldly
+	
+})(jQuery, window, document);
+</code></pre>
+				</section>
+			<section>
+					<h2>Use Regex where possible</h2>
+					<pre><code class="javascript">
+var url = window.location.href,
+
+path = /realplayer\/(\w+[\-\w]*)(\?|#|$|\/)/i.exec(url); 
+
+if(path && path.length > 0) {
+	// not sure if we can trust window.location.pathname
+	url = window.location.protocol + "//" 
+	+ window.location.hostname + '/realplayer/' + path[1]; 
+
+!/^select$/gi.test(this.get(0).nodeName);
+</code></pre>
+				<p>
+						Some of Regex used in jQuery 1.4.4
+					</p>
+<pre><code class="javascript">				
+var rclass = /[\n\t]/g,
+
+rspaces = /\s+/,
+
+rreturn = /\r/g,
+
+rspecialurl = /^(?:href|src|style)$/,
+
+rtype = /^(?:button|input)$/i,
+
+rfocusable = /^(?:button|input|object|select|textarea)$/i,
+
+rclickable = /^a(?:rea)?$/i,
+
+rradiocheck = /^(?:radio|checkbox)$/i;
+</code></pre>
+				</section>					
 				<section data-markdown>
 					<script type="text/template">
 						## Markdown support
