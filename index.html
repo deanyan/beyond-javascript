@@ -492,15 +492,43 @@ $('.get-in').redirectToOrderPath({
 });
 </code></pre>
 				</section>
-	<section>
-					<h2></h2>
-					<pre><code class="javascript">
-</code></pre>
-				<p>
-						
-					</p>
+		<section>
+			<h2>Module Pattern</h2>
+				<p>Use module pattern to protect changes</p>
 <pre><code class="javascript">				
+var module = (function(){
+var _private = {
+i:5,
+get: function() {
+  console.log('current value:' + this.i);
+},
 
+set: function( val ) {
+   this.i = val; 
+},
+
+run: function() {
+   console.log('running'); 
+},
+
+jump: function() {
+   console.log('jumping'); 
+}
+};
+
+return {
+facade: function( args ) {
+   _private.set(args.val);
+  _private.get();
+  if( args.run ) {
+	 _private.run(); 
+  }
+}
+
+};
+})();
+
+module.facade({run: true, val: 10});
 </code></pre>
 				</section>									
 			</div>
