@@ -1,7 +1,7 @@
-# Wriging More Effective JavaScript Code
+## Wriging More Effective JavaScript Code
 
 
-## Outline
+### Outline
 - **More Effective Operators** 
 - **Object, Array Shortcut Notations**
 - **Chainable Methods and Self-invoking Functions**
